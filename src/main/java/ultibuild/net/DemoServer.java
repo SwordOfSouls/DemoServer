@@ -58,20 +58,11 @@ public final class DemoServer extends JavaPlugin implements Listener {
         if(!p.isOp()) {
             CommandBlocked cmdEvent = new CommandBlocked(event.getMessage());
             Bukkit.getServer().getPluginManager().callEvent(cmdEvent);
-            System.out.println(!cmdEvent.isCancelled());
             if(!cmdEvent.isCancelled()) {
                 event.setCancelled(true);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&cSorry you can't do that!"));
             } else
                 event.setCancelled(false);
-        }
-
-    }
-
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void cmd(CommandBlocked event) {
-        if(event.command.equals("/plugins")) {
-            event.setCancelled(true);
         }
 
     }
